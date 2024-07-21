@@ -11,10 +11,11 @@ def iniciarlogin():
         logsenha = inssenha.get()
         print("Nome logado: " + lognome)
         print("Senha logado: " + logsenha)
-        if logaruser(lognome, logsenha) == False:
+        if not logaruser(lognome, logsenha):
             messagebox.showerror(title='Incorreto!', message='As informações de login estão incorretas.')
         else:
             janelalo.destroy()
+            return True
 
     def registrar():
         janelalo.destroy()
@@ -70,7 +71,7 @@ def registrarusuario():
         regsenha = inssenha.get()
         print("Nome registrado: "+regnome)
         print("Senha registrado: "+regsenha)
-        if registraruser(regnome, regsenha) == False:
+        if not registraruser(regnome, regsenha):
             messagebox.showerror(title='Já existe!', message='O usuário que você informou já existe.')
         else:
             messagebox.showinfo(title='Sucesso!', message='Usuário criado com sucesso!')

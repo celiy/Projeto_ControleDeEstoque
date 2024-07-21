@@ -4,10 +4,11 @@ def checar_existencia(nome, senha, texto):
     linhas = texto.split('\n')
     for i in range(len(linhas)):
         if linhas[i].strip().startswith("Nome:") and linhas[i].strip().endswith(nome):
-            if i + 1 < len(linhas) and linhas[i + 1].strip().startswith("Senha:") and linhas[i + 1].strip().endswith(
-                    senha):
-                return True
-    return False
+            if i + 1 < len(linhas) and linhas[i + 1].strip().startswith("Senha:") and linhas[i + 1].strip().endswith(senha):
+                for j in range(i, -1, -1):
+                    if linhas[j].strip().startswith("ID:"):
+                        return linhas[j].strip().split("ID: ")[-1]
+    return None
 
 def registraruser(regnome, regsenha):
     filepath = "userinfo.txt"
@@ -45,10 +46,9 @@ def logaruser(lognome, logsenha):
         print("L - Elementos do arquivo:")
         print(userinfo)
 
-        if checar_existencia(lognome, logsenha, userinfo):
-            print("Login valido")
-            return True
+        userid = checar_existencia(lognome, logsenha, userinfo)
+        if userid is not None:
+            return userid
         else:
-            print("Login invalido")
             return False
     return False
