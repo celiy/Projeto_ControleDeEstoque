@@ -7,6 +7,7 @@ def checar_existencia(nome, senha, texto):
             if i + 1 < len(linhas) and linhas[i + 1].strip().startswith("Senha:") and linhas[i + 1].strip().endswith(senha):
                 for j in range(i, -1, -1):
                     if linhas[j].strip().startswith("ID:"):
+                        print("ID do checar existencia: "+str(linhas[j].strip().split("ID: ")[-1]))
                         return linhas[j].strip().split("ID: ")[-1]
     return None
 
@@ -45,10 +46,11 @@ def logaruser(lognome, logsenha):
             userinfo = file.read()
         print("L - Elementos do arquivo:")
         print(userinfo)
-
-        userid = checar_existencia(lognome, logsenha, userinfo)
-        if userid is not None:
-            return userid
-        else:
+        useridrlu = str(checar_existencia(lognome, logsenha, userinfo))
+        useridrlu.replace("ID:","")
+        print("UserID retornado do login: "+useridrlu)
+        if "ID:" in useridrlu:
             return False
+        else:
+            return str(useridrlu)
     return False

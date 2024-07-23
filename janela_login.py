@@ -3,6 +3,7 @@ from tkinter import messagebox
 from appinfo import *
 from registrar_logar_user import *
 
+useridjl = ""
 def iniciarlogin():
     print("Na janelalo de login.")
 
@@ -11,11 +12,14 @@ def iniciarlogin():
         logsenha = inssenha.get()
         print("Nome logado: " + lognome)
         print("Senha logado: " + logsenha)
-        if not logaruser(lognome, logsenha):
-            messagebox.showerror(title='Incorreto!', message='As informações de login estão incorretas.')
-        else:
+        global useridjl
+        useridjl = str(logaruser(lognome, logsenha))
+        print("UserID no modulo login: "+str(useridjl))
+        if not useridjl == "False":
+            print("Login completo.")
             janelalo.destroy()
-            return True
+        else:
+            messagebox.showerror(title='Incorreto!', message='As informações de login estão incorretas.')
 
     def registrar():
         janelalo.destroy()
@@ -58,6 +62,9 @@ def iniciarlogin():
     txtfooter = Label(janelalo,textvariable=versao,fg='gray').pack(side=BOTTOM)
 
     janelalo.mainloop()
+
+    global useridjl
+    return str(useridjl)
 
 def registrarusuario():
     print("Na janela de registrar.")

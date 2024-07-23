@@ -1,34 +1,25 @@
 from tkinter import *
+
 class SetAppinfo:
-    versaoatual = "Build 1.0"
-    dataversao = "20/07/2024"
-    criador = "Diogo Carvalho Viegas"
+    def __init__(self):
+        self.versaoatual = "Build Alpha"
+        self.dataversao = "20/07/2024"
+        self.criador = "Diogo Carvalho Viegas"
 
 def getappinfo():
 
-    def setfields():
-        versaoapp.set(appinfo.versaoatual)
-        dataversaoapp.set(appinfo.dataversao)
-        criadorapp.set(appinfo.criador)
-
     janelaso = Tk()
-    janelaso.geometry("300x300")
+    janelaso.geometry("300x200")
     janelaso.title("Sobre")
-    janelaso.resizable(False,False)
+    janelaso.resizable(False, False)
 
-    appinfo = SetAppinfo()
-    versaoapp = StringVar()
-    dataversaoapp = StringVar()
-    criadorapp = StringVar()
+    Label(janelaso, text="Versão:").grid(row=0, column=0, padx=10, pady=10, sticky='w')
+    Label(janelaso, text="Build Alpha").grid(row=0, column=1, padx=10, pady=10, sticky='e')
 
-    setfields()
+    Label(janelaso, text="Data da Versão:").grid(row=1, column=0, padx=10, pady=10, sticky='w')
+    Label(janelaso, text="20/07/2024").grid(row=1, column=1, padx=10, pady=10, sticky='e')
 
-    print(versaoapp)
-    print(dataversaoapp)
-    print(criadorapp)
-
-    Label(janelaso,textvariable=versaoapp).pack()
-    Label(janelaso,textvariable=dataversaoapp).pack()
-    Label(janelaso,textvariable=criadorapp).pack()
+    Label(janelaso, text="Criador:").grid(row=2, column=0, padx=10, pady=10, sticky='w')
+    Label(janelaso, text="Diogo Carvalho Viegas").grid(row=2, column=1, padx=10, pady=10, sticky='e')
 
     janelaso.mainloop()
