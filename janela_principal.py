@@ -34,8 +34,64 @@ def janelacadastros():
     janela.mainloop()
 
 def janelaestoque():
+
+    def drawlist():
+        filepath = "estoqueinfo.txt"
+
+        if os.path.isfile(filepath):
+            with open(filepath, "r") as file:
+                produtosinfo = file.readlines()
+
+            produtos = []
+            produto = ""
+            for linha in produtosinfo:
+                if linha.strip() == "/":
+                    if produto:
+                        produtos.append(produto)
+                    produto = ""
+                else:
+                    produto += linha.strip() + " "
+
+            listbox = Listbox(janela, width=120, height=20)
+            listbox.grid(row=0, column=1)
+
+            for n, produto in enumerate(produtos):
+                listbox.insert(n, produto)
+
+    def cadastrar():
+        #nomep
+        #descp
+        #tipop
+        #marcap
+
+        drawlist()
+
     janela = Tk()
     janela.title("Estoque")
+
+    framecadastro = Frame(janela,bd=3, relief='groove')
+    framecadastro.grid(row=0,column=0)
+
+    descricao = Label(framecadastro, text="Registrar estoque:", font=("Helvetica", 10), height=4,width=20).pack(side=TOP)
+    descricaoitens = Label(framecadastro, text="Nome",font=("Helvetica", 10)).pack(side=TOP)
+    insnome = Entry(framecadastro, width=15)
+    insnome.pack(side=TOP,pady=3)
+    descricaoitens = Label(framecadastro, text="Descrição", font=("Helvetica", 10)).pack(side=TOP)
+    insdesc = Entry(framecadastro, width=15)
+    insdesc.pack(side=TOP,pady=3)
+    descricaoitens = Label(framecadastro, text="Tipo", font=("Helvetica", 10)).pack(side=TOP)
+    instipo = Entry(framecadastro, width=15)
+    instipo.pack(side=TOP,pady=3)
+    descricaoitens = Label(framecadastro, text="Marca", font=("Helvetica", 10)).pack(side=TOP)
+    insmarca = Entry(framecadastro, width=15)
+    insmarca.pack(side=TOP,pady=3)
+    descricaoitens = Label(framecadastro, text="Quantidade", font=("Helvetica", 10)).pack(side=TOP)
+    insquant = Entry(framecadastro, width=15)
+    insquant.pack(side=TOP,pady=3)
+    butsubmit = Button(framecadastro, text="Cadastrar", font=("Helvetica", 10), command=cadastrar)
+    butsubmit.pack(side=TOP,pady=3)
+
+    drawlist()
 
     janela.mainloop()
 
@@ -66,7 +122,7 @@ def iniciarjanela(userid):
     dashboard.grid(row=0)
     cadastros = Button(janela,text="Cadastrar",width=framecebuttonw,height=framecebuttonh,command=janelacadastros)
     cadastros.grid(row=1)
-    estoque = Button(janela,text="Estoque",width=framecebuttonw,height=framecebuttonh)
+    estoque = Button(janela,text="Estoque",width=framecebuttonw,height=framecebuttonh,command=janelaestoque)
     estoque.grid(row=2)
     vendas = Button(janela,text="Vendas",width=framecebuttonw,height=framecebuttonh)
     vendas.grid(row=3)

@@ -1,0 +1,33 @@
+/
+{
+  ID: 
+  Nome: 
+  Descricao: 
+  Tipo: 
+  Marca: 
+  Quantidade: 
+  UserID: 
+}
+/
+/
+{
+  ID: 2
+  Nome: Produto1
+  Descricao: Descrição1
+  Tipo: Tipo1
+  Marca: Marca1
+  Quantidade: 210
+  UserID: UserID123
+}
+/
+/
+{
+  ID: 4
+  Nome: Produtfdso1
+  Descricao: Dsdescrição1
+  Tipo: Tipoaa1
+  Marca: Marcad1321321
+  Quantidade: 40
+  UserID: 1
+}
+/
