@@ -1,6 +1,7 @@
 from tkinter import *
 from janela_principal_funcoes import *
 
+guserid = ""
 def janelacadastros():
 
     def cadastrar():
@@ -59,11 +60,14 @@ def janelaestoque():
                 listbox.insert(n, produto)
 
     def cadastrar():
-        #nomep
-        #descp
-        #tipop
-        #marcap
-
+        nomep = insnome.get()
+        descp = insdesc.get()
+        tipop = instipo.get()
+        marcap = insmarca.get()
+        quantp = insquant.get()
+        global guserid
+        userid = guserid
+        registrarproduto(nomep,descp,tipop,marcap,quantp,userid)
         drawlist()
 
     janela = Tk()
@@ -111,6 +115,9 @@ def iniciarjanela(userid):
     janela.title("Controle de estoque")
     print("Na janela principal com o ID: "+userid)
 
+    global guserid
+    guserid = userid
+
     #vars para atributos widgets
     framecebuttonw = 15
     framecebuttonh = 3
@@ -133,7 +140,7 @@ def iniciarjanela(userid):
     h1dashboard = Label(janela,text="Dashboard")
     h1dashboard.grid(row=0,column=1)
 
-    vendashoje = Label(janela,text="Vendas de hoje:",width=20)
+    vendashoje = Label(janela,text="Vendas total:",width=20)
     vendashoje.grid(row=1,column=1,sticky='n')
     varvenhj = IntVar()
     venhj = Label(janela,textvariable=varvenhj)
@@ -145,7 +152,7 @@ def iniciarjanela(userid):
     fames = Label(janela,textvariable=varfames)
     fames.grid(row=1, column=2, sticky='s')
 
-    pagarhoje = Label(janela,text="A pagar hoje:",width=20)
+    pagarhoje = Label(janela,text="A pagar:",width=20)
     pagarhoje.grid(row=1,column=3,sticky='n')
     varpahj = IntVar()
     pahj = Label(janela,textvariable=varpahj)

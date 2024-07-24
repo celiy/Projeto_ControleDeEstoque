@@ -81,7 +81,7 @@ def registrarproduto(nomep, descricaop, tipop, marcap, quantidadep, userid):
                     newid = str(produtosinfo.count("ID: "))
                     with open(filepath, "a") as file:
                         file.write(
-                            f"/\n{{\n  ID: {newid}\n  Nome: {regnome}\n  Descricao: {regdescricao}\n  Tipo: {regtipo}\n  Marca: {regmarca}\n  Quantidade: {regquantidade}\n  UserID: {reguserid}\n}}\n/\n")
+                            f"/\n{{\n  | ID: {newid}\n  | Nome: {regnome}\n  | Descricao: {regdescricao}\n  | Tipo: {regtipo}\n  | Marca: {regmarca}\n  | Quantidade: {regquantidade}\n  | UserID: {reguserid}\n}}\n/\n")
                     print("R - Informações adicionadas ao arquivo com sucesso.")
 
                 with open(filepath, "r") as file:
@@ -95,4 +95,3 @@ def registrarproduto(nomep, descricaop, tipop, marcap, quantidadep, userid):
                 print("Arquivo criado com sucesso")
 
     registrarprod(nomep, descricaop, tipop, marcap, quantidadep, userid)
-registrarproduto("Produtfdso1", "Dsdescrição1", "Tipoaa1", "Marcad1321321", 10, "1")
