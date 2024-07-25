@@ -19,6 +19,7 @@ def iniciarlogin():
             print("Login completo.")
             janelalo.destroy()
         else:
+            useridjl = ""
             messagebox.showerror(title='Incorreto!', message='As informações de login estão incorretas.')
 
     def registrar():
