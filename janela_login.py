@@ -38,8 +38,6 @@ def iniciarlogin():
     janelalo = Tk()
     janelalo.geometry("400x500")
     janelalo.title("Login")
-    icon = PhotoImage(file='icon.png')
-    janelalo.iconphoto(True, icon)
     janelalo.resizable(False,False)
 
     versao = StringVar()
@@ -93,8 +91,6 @@ def registrarusuario():
     janelare = Tk()
     janelare.geometry("400x500")
     janelare.title("Registrar")
-    icon = PhotoImage(file='icon.png')
-    janelare.iconphoto(True, icon)
     janelare.resizable(False,False)
 
     versao = StringVar()
