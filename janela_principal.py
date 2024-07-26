@@ -1,9 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
-
 from janela_principal_funcoes import *
 
 guserid = ""
+
 def janelacadastros():
 
     def cadastrar():
@@ -112,31 +112,11 @@ def janelavendas():
     janela = Tk()
     janela.title("Vendas")
 
+    textestoque = Label(janela,text="Estoque atual:")
+    textestoque.grid(row=0, column=1)
+
     def drawestoque():
         filepath = "estoqueinfo.txt"
-
-        if os.path.isfile(filepath):
-            with open(filepath, "r") as file:
-                produtosinfo = file.readlines()
-
-            produtos = []
-            produto = ""
-            for linha in produtosinfo:
-                if linha.strip() == "/":
-                    if produto:
-                        produtos.append(produto)
-                    produto = ""
-                else:
-                    produto += linha.strip() + " "
-
-            listbox = Listbox(janela, width=120, height=20)
-            listbox.grid(row=0, column=1)
-
-            for n, produto in enumerate(produtos):
-                listbox.insert(n, produto)
-
-    def drawvendas():
-        filepath = "vendasinfo.txt"
 
         if os.path.isfile(filepath):
             with open(filepath, "r") as file:
@@ -158,6 +138,35 @@ def janelavendas():
             for n, produto in enumerate(produtos):
                 listbox.insert(n, produto)
 
+    textvendas = Label(janela, text="Vendas atual:")
+    textvendas.grid(row=2, column=1)
+
+    def drawvendas():
+        filepath = "vendasinfo.txt"
+
+        if os.path.isfile(filepath):
+            with open(filepath, "r") as file:
+                produtosinfo = file.readlines()
+
+            produtos = []
+            produto = ""
+            for linha in produtosinfo:
+                if linha.strip() == "/":
+                    if produto:
+                        produtos.append(produto)
+                    produto = ""
+                else:
+                    produto += linha.strip() + " "
+
+            listbox = Listbox(janela, width=120, height=20)
+            listbox.grid(row=3, column=1)
+
+            for n, produto in enumerate(produtos):
+                listbox.insert(n, produto)
+
+    textclientes = Label(janela, text="Clientes atual:")
+    textclientes.grid(row=0, column=2)
+
     def drawclientes():
         filepath = "clientesinfo.txt"
 
@@ -176,7 +185,7 @@ def janelavendas():
                     produto += linha.strip() + " "
 
             listbox = Listbox(janela, width=60, height=40)
-            listbox.grid(row=0, column=2, rowspan=2)
+            listbox.grid(row=0, column=2, rowspan=4)
 
             for n, produto in enumerate(produtos):
                 listbox.insert(n, produto)
@@ -191,7 +200,7 @@ def janelavendas():
         drawvendas()
 
     framecadastro = Frame(janela,bd=3, relief='groove')
-    framecadastro.grid(row=0,column=0)
+    framecadastro.grid(row=0,column=0, rowspan=3)
 
     descricao = Label(framecadastro, text="Registrar venda:", font=("Helvetica", 10), height=4,width=20).pack(side=TOP)
     descricaoitens = Label(framecadastro, text="Nome produto:",font=("Helvetica", 10)).pack(side=TOP)

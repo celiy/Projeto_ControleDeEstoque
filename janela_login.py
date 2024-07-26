@@ -4,12 +4,14 @@ from appinfo import *
 from registrar_logar_user import *
 
 useridjl = ""
+
 def iniciarlogin():
     print("Na janelalo de login.")
 
     def logar():
         lognome = insnome.get()
         logsenha = inssenha.get()
+
         print("Nome logado: " + lognome)
         print("Senha logado: " + logsenha)
         global useridjl
@@ -36,6 +38,8 @@ def iniciarlogin():
     janelalo = Tk()
     janelalo.geometry("400x500")
     janelalo.title("Login")
+    icon = PhotoImage(file='icon.png')
+    janelalo.iconphoto(True, icon)
     janelalo.resizable(False,False)
 
     versao = StringVar()
@@ -89,6 +93,8 @@ def registrarusuario():
     janelare = Tk()
     janelare.geometry("400x500")
     janelare.title("Registrar")
+    icon = PhotoImage(file='icon.png')
+    janelare.iconphoto(True, icon)
     janelare.resizable(False,False)
 
     versao = StringVar()

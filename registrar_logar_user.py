@@ -4,12 +4,14 @@ def checar_existencia(nome, senha, texto):
     linhas = texto.split('\n')
     for i in range(len(linhas)):
         if linhas[i].strip().startswith("Nome:") and linhas[i].strip().endswith(nome):
-            if i + 1 < len(linhas) and linhas[i + 1].strip().startswith("Senha:") and linhas[i + 1].strip().endswith(senha):
+            if i + 1 < len(linhas) and linhas[i + 1].strip().startswith("Senha:") and linhas[i + 1].strip().endswith(
+                    senha):
                 for j in range(i, -1, -1):
                     if linhas[j].strip().startswith("ID:"):
-                        print("ID do checar existencia: "+str(linhas[j].strip().split("ID: ")[-1]))
+                        print("ID do checar existencia: " + str(linhas[j].strip().split("ID: ")[-1]))
                         return linhas[j].strip().split("ID: ")[-1]
     return None
+
 
 def registraruser(regnome, regsenha):
     filepath = "userinfo.txt"
@@ -38,6 +40,7 @@ def registraruser(regnome, regsenha):
             with open(filepath, "w") as file:
                 file.write("/\n {\n  ID: \n  Nome: \n  Senha: \n }\n/\n")
             print("Arquivo criado com sucesso")
+    return True
 
 def logaruser(lognome, logsenha):
     filepath = "userinfo.txt"
@@ -47,8 +50,8 @@ def logaruser(lognome, logsenha):
         print("L - Elementos do arquivo:")
         print(userinfo)
         useridrlu = str(checar_existencia(lognome, logsenha, userinfo))
-        useridrlu.replace("ID:","")
-        print("UserID retornado do login: "+useridrlu)
+        useridrlu.replace("ID:", "")
+        print("UserID retornado do login: " + useridrlu)
         if "ID:" in useridrlu:
             return False
         else:
