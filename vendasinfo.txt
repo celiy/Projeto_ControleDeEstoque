@@ -1,0 +1,18 @@
+/
+{
+  IDVenda: 
+  Nome Produto: 
+  Nome CLiente: 
+  Quantidade: 
+ Preço: 
+}
+/
+/
+{
+  IDVenda: 0
+  Nome Produto: Calça Jeans
+  Nome Cliente: Celi
+  Quantidade: 30
+    Preço: 2000
+}
+/

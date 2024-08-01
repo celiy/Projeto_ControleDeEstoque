@@ -1,0 +1,21 @@
+/
+ {
+  ID: 
+  Nome: 
+  Endereco: 
+ }
+/
+/
+ {
+  ID: 1
+  Nome: Celi
+  Endereco: Rua, 123 / Cidade
+ }
+/
+/
+ {
+  ID: 2
+  Nome: Cliente
+  Endereco: Avenida, 444 / Municipio
+ }
+/

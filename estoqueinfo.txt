@@ -1,0 +1,33 @@
+/
+{
+  ID: 
+  Nome: 
+  Descricao: 
+  Tipo: 
+  Marca: 
+  Quantidade: 
+  UserID: 
+}
+/
+/
+{
+  ID: 2
+  Nome: Calça Jeans
+  Descricao: Jeans
+  Tipo: Calça
+  Marca: Jenans
+  Quantidade: 60
+  UserID: 1
+}
+/
+/
+{
+  ID: 4
+  Nome: Calça
+  Descricao: Tecido
+  Tipo: Calça
+  Marca: Tercidas
+  Quantidade: 180
+  UserID: 1
+}
+/

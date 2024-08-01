@@ -1,5 +1,6 @@
 import os
 
+#Checa a existência de um produto e retorna true + o id do produto
 def checar_existencia(nome, texto):
     linhas = texto.split('\n')
     for i in range(len(linhas)):
@@ -7,6 +8,7 @@ def checar_existencia(nome, texto):
             return True, i
     return None, None
 
+#Quando esta função é chamada, ela atualiza a quantidade de produtos no estoque
 def atualizarestoque(regnome, regquantidade):
     filepath = "estoqueinfo.txt"
     if os.path.isfile(filepath):
@@ -15,10 +17,11 @@ def atualizarestoque(regnome, regquantidade):
         print("R - Elementos do arquivo:")
         print(produtosinfo)
 
+        #Pega o id do produto e index
         id_existente, index = checar_existencia(regnome, produtosinfo)
 
         if id_existente:
-            # Produto já existe, adicionar a quantidade
+            #Produto já existe, adicionar a quantidade
             linhas = produtosinfo.split('\n')
             for k in range(index, len(linhas)):
                 if linhas[k].strip().startswith("Quantidade:"):
@@ -31,7 +34,9 @@ def atualizarestoque(regnome, regquantidade):
                 file.write(produtosinfo)
             print("Quantidade atualizada com sucesso.")
 
+#Esta função registra um cliente
 def registrarcliente(nomec,enderecoc):
+    #Esta função checa a existencia de um cliente caso na hora de registrar-lo e ele já existe
     def checar_existenciacli(nome, endereco, texto):
         linhas = texto.split('\n')
         for i in range(len(linhas)):
@@ -41,6 +46,7 @@ def registrarcliente(nomec,enderecoc):
                     return True
         return False
 
+    #Esta função registra um cliente
     def registrar(regnome, regendereco):
         filepath = "clientesinfo.txt"
         while True:
@@ -50,6 +56,7 @@ def registrarcliente(nomec,enderecoc):
                 print("R - Elementos do arquivo:")
                 print(clientesinfo)
 
+                #Checa a existência do cliente
                 if checar_existenciacli(regnome, regendereco, clientesinfo):
                     return False
                 else:
@@ -73,6 +80,7 @@ def registrarcliente(nomec,enderecoc):
     if sucesso == False:
         return False
 
+#Esta função registra um produto
 def registrarproduto(nomep, descricaop, tipop, marcap, quantidadep, userid):
 
     def registrarprod(regnome, regdescricao, regtipo, regmarca, regquantidade, reguserid):
@@ -84,8 +92,9 @@ def registrarproduto(nomep, descricaop, tipop, marcap, quantidadep, userid):
                 print("R - Elementos do arquivo:")
                 print(produtosinfo)
 
+                #Checa a existência do produto registrado
                 id_existente, index = checar_existencia(regnome, produtosinfo)
-
+                #Se existe, ele irá apenas adicionar a quantidade
                 if id_existente:
                     # Produto já existe, adicionar a quantidade
                     linhas = produtosinfo.split('\n')
@@ -99,8 +108,8 @@ def registrarproduto(nomep, descricaop, tipop, marcap, quantidadep, userid):
                     with open(filepath, "w") as file:
                         file.write(produtosinfo)
                     print("Quantidade atualizada com sucesso.")
+                #caso não existe, ele apenas irá adicionar um produto novo
                 else:
-                    # Novo produto, adicionar ao arquivo
                     newid = str(produtosinfo.count("ID: "))
                     with open(filepath, "a") as file:
                         file.write(
@@ -119,6 +128,7 @@ def registrarproduto(nomep, descricaop, tipop, marcap, quantidadep, userid):
 
     registrarprod(nomep, descricaop, tipop, marcap, quantidadep, userid)
 
+#Esta função registra uma venda
 def registrarvenda(nomep, nomec, quantv, preco):
 
     def registrar(nomepp, nomecc, quantvv, precoo):
@@ -129,7 +139,6 @@ def registrarvenda(nomep, nomec, quantv, preco):
                     produtosinfo = file.read()
                 print("R - Elementos do arquivo:")
                 print(produtosinfo)
-                # Novo produto, adicionar ao arquivo
                 newid = str(produtosinfo.count("ID: "))
                 with open(filepath, "a") as file:
                     file.write(
@@ -154,6 +163,7 @@ def registrarvenda(nomep, nomec, quantv, preco):
 
     registrar(nomep, nomec, quantv, preco)
 
+#Esta função quando chamada atualiza o faturamento feito a partir das vendas
 def somar_precos():
     filepath = "vendasinfo.txt"
     soma_total = 0

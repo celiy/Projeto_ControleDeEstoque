@@ -42,13 +42,18 @@ def registraruser(regnome, regsenha):
             print("Arquivo criado com sucesso")
     return True
 
+#Esta função executa o processo de verificar se o login do usuário é válido
 def logaruser(lognome, logsenha):
+    #Checa se o arquivo com as informações do login existem
     filepath = "userinfo.txt"
     if os.path.isfile(filepath):
         with open(filepath, "r") as file:
             userinfo = file.read()
+        #Mostra as informações do arquivo
         print("L - Elementos do arquivo:")
         print(userinfo)
+
+        #Checa se o login é válido e retorna o id do usuário logado
         useridrlu = str(checar_existencia(lognome, logsenha, userinfo))
         useridrlu.replace("ID:", "")
         print("UserID retornado do login: " + useridrlu)
